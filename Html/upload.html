@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload - RRG Arts</title>
+  <link rel="stylesheet" href="Css/up.css">
+</head>
+<body>
+  <div id="painel-upload">
+    <h1>Upload de Arte</h1>
+
+    <label>Imagem:</label>
+    <input type="file" id="input-imagem" accept="image/*">
+
+      
+    <br><label>Categoria:</label>
+    <select id="input-categoria">
+      <option value="clientes">Clientes</option>
+      <option value="estudos">Estudos</option>
+      <option value="ia">IA</option>
+    </select>
+
+    <br><button onclick="uploadImagem()" id="Enviar">Enviar</button>
+    <p id="status"></p>
+  </div>
+
+  <script src="Js/upload.js"></script>
+</body>
+</html>

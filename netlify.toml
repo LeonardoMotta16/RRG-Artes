@@ -1,0 +1,7 @@
+[build]
+  publish = "Html"
+  functions = "netlify/functions"
+
+[dev]
+  publish = "Html"
+  port = 8888

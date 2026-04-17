@@ -1,0 +1,37 @@
+.homeSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  /* Removido: min-height: 80vh */
+}
+
+.moldura-eletrica {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #00f2ff, inset 0 0 10px #00f2ff;
+  /* Removido: margin: 110px e margin-top: 150px */
+}
+
+.img-principal {
+  width: 275px;
+  height: 375px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.mini-prev, .mini-next {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.mini-prev:hover, .mini-next:hover {
+  opacity: 0.8;
+}
