@@ -1,9 +1,9 @@
 .homeSection {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px;
-  /* Removido: min-height: 80vh */
+  justify-content: center;
+  gap: 60px;
+  padding: 40px 20px;
 }
 
 .moldura-eletrica {
@@ -13,19 +13,18 @@
   background: transparent;
   border-radius: 15px;
   box-shadow: 0 0 20px #00f2ff, inset 0 0 10px #00f2ff;
-  /* Removido: margin: 110px e margin-top: 150px */
 }
 
 .img-principal {
-  width: 275px;
-  height: 375px;
+  width: 350px;
+  height: 480px;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .mini-prev, .mini-next {
-  width: 80px;
-  height: 120px;
+  width: 100px;
+  height: 150px;
   object-fit: cover;
   border-radius: 8px;
   opacity: 0.5;
