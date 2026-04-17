@@ -14,7 +14,7 @@ exports.handler = async function(event) {
     const resultado = await cloudinary.search
       .expression(expressao)
       .sort_by('created_at', 'desc')
-      .max_results(30)
+      .max_results(1000)
       .execute()
 
     const urls = resultado.resources.map(img => img.secure_url)
