@@ -453,3 +453,39 @@ body {
     background: rgba(255,255,255,0.1);
   }
 }
+/* Modo escuro padrão */
+body.dark {
+  background-color: #0a0a0a;
+}
+
+body.dark .foto-perf p {
+  color: #ccc;
+}
+
+body.dark .galeria img {
+  opacity: 0.9;
+}
+
+/* Botão de tema */
+#btn-tema {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: 2px solid #00f2ff;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+#btn-tema:hover {
+  background: rgba(0, 242, 255, 0.2);
+}
