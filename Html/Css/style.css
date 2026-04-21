@@ -361,11 +361,13 @@ body {
   }
  
   .foto-perf p {
-    max-width: 300px;
-    color: #333;
-    font-size: 16px;
-    order: 1;
-  }
+  max-width: 300px;
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: normal;
+  overflow-wrap: normal;
+}
  
   .galeria {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -439,13 +441,14 @@ body {
   }
 
    #botoes-banner {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: column;
-    align-items: center;
-  }
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  left: auto;
+  transform: none;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
   #botoes-banner button:not(.hamburguer) {
     width: 100%;
