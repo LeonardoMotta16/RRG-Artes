@@ -11,12 +11,12 @@
 
 <body>
     <div class="ScRipts">
-<script>
-function toggleMenu() {
-  const menu = document.getElementById('menu-botoes')
-  menu.classList.toggle('aberto')
-}
-</script>
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('menu-botoes')
+                menu.classList.toggle('aberto')
+            }
+        </script>
     </div>
     <div id="cabec">
         <div class="banner">
@@ -60,6 +60,7 @@ function toggleMenu() {
         </div>
     </div>
     <footer id="rodape">
+        <button id="btn-tema" onclick="alternarTema()">🌙</button>
         <p>RRG Arts © 2026</p>
         <a href="https://www.instagram.com/rrg.arts_/" target="_blank">
             <img src="/Imagens/Icons/instagram.png" alt="Instagram">
@@ -67,7 +68,6 @@ function toggleMenu() {
         <a href="https://wa.me/5511934350617" target="_blank">
             <img src="/Imagens/Icons/whatsapp.png" alt="WhatsApp">
         </a>
-        <button id="btn-tema" onclick="alternarTema()">🌙</button>
     </footer>
     <div class="ScRipts">
         <script src="/Js/tema.js"></script>
