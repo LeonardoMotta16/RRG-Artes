@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,59 +8,67 @@
     <link rel="shortcut icon" href="/Imagens/Favcon/Favc-RRG.ico" type="image/x-icon">
     <title>RRG Arts</title>
 </head>
+
 <body>
     <div class="ScRipts">
-    
+
     </div>
     <div id="cabec">
         <div class="banner">
             <img src="/Imagens/Banner.png" alt="#">
             <div id="botoes-banner">
-                <button onclick="trocarAba('home')">Home</button>
-                <button onclick="trocarAba('clientes')">Clientes</button>
-                <button onclick="trocarAba('estudos')">Estudos</button>
-                <button onclick="trocarAba('ia')">IA</button>
-                <button onclick="trocarAba('tudo')">Tudo</button>
+                <button class="hamburguer" onclick="toggleMenu()">☰</button>
+                <div id="menu-botoes">
+                    <button onclick="trocarAba('home')">Home</button>
+                    <button onclick="trocarAba('clientes')">Clientes</button>
+                    <button onclick="trocarAba('estudos')">Estudos</button>
+                    <button onclick="trocarAba('ia')">IA</button>
+                    <button onclick="trocarAba('tudo')">Tudo</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="homeSection" style="display:none">
-  <div class="home-esquerda">
-    <div class="moldura-eletrica">
-      <img class="mini-prev" id="img-prev" src="" alt="anterior">
-      <img class="img-principal" id="img-carrossel" src="" alt="destaque">
-      <img class="mini-next" id="img-next" src="" alt="próxima">
+    <div class="homeSection" style="display:none">
+        <div class="home-esquerda">
+            <div class="moldura-eletrica">
+                <img class="mini-prev" id="img-prev" src="" alt="anterior">
+                <img class="img-principal" id="img-carrossel" src="" alt="destaque">
+                <img class="mini-next" id="img-next" src="" alt="próxima">
+            </div>
+        </div>
+        <div class="foto-perf">
+            <img src="/Imagens/Foto_de_Perfil_3.png">
+            <p>Meu Nome é Renan Gomes Mais conhecido como RRG Arts, Tenho 15 Anos e Sou Designer Esportivo com 1 Ano de
+                Experiência, Atualmente investindo em Manipulação com IA e aperfeiçoando meus Criativos, Nesse
+                portifólio você vai ver meus melhores criativos de Estudo, Manipulação e Oficiais para atletas, Bom
+                Espero que Goste!</p>
+        </div>
     </div>
-  </div>
-<div class="foto-perf">
-    <img src="/Imagens/Foto_de_Perfil_3.png">
-    <p>Meu Nome é Renan Gomes Mais conhecido como RRG Arts, Tenho 15 Anos e Sou Designer Esportivo com 1 Ano de Experiência, Atualmente investindo em Manipulação com IA e aperfeiçoando meus Criativos, Nesse portifólio você vai ver meus melhores criativos de Estudo, Manipulação e Oficiais para atletas, Bom Espero que Goste!</p>
-</div>
-</div>
 
 
 
-<div class="galeria"></div>
+    <div class="galeria"></div>
     <div id="modal">
         <div id="modal-conteudo">
             <span onclick="closeModal()">X</span>
             <img id="modal-imagem" src="">
-        </div> 
+        </div>
     </div>
-<footer id="rodape">
-    <p>RRG Arts © 2026</p>
-  <a href="https://www.instagram.com/rrg.arts_/" target="_blank">
-    <img src="/Imagens/Icons/instagram.png" alt="Instagram">
-  </a>
-  <a href="https://wa.me/5511934350617" target="_blank">
-    <img src="/Imagens/Icons/whatsapp.png" alt="WhatsApp">
-  </a>
-</footer>
-<div class="ScRipts">
-    <script src="/Js/carrossel.js"></script>
-    <script src="/Js/galeira2.js"></script>
-    <script src="/Js/modal.js"></script>
-    <script src="/Js/loadpage.js"></script>
-</div>
+    <footer id="rodape">
+        <p>RRG Arts © 2026</p>
+        <a href="https://www.instagram.com/rrg.arts_/" target="_blank">
+            <img src="/Imagens/Icons/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://wa.me/5511934350617" target="_blank">
+            <img src="/Imagens/Icons/whatsapp.png" alt="WhatsApp">
+        </a>
+    </footer>
+    <div class="ScRipts">
+        <script src="/Js/carrossel.js"></script>
+        <script src="/Js/galeira2.js"></script>
+        <script src="/Js/modal.js"></script>
+        <script src="/Js/loadpage.js"></script>
+    </div>
 </body>
+
 </html>

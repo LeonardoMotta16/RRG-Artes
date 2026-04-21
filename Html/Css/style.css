@@ -401,3 +401,54 @@ body {
   src: url('Fontes/ClashDisplay-Variable.woff2') format('woff2');
   font-weight: 100 900;
 }
+.hamburguer {
+  display: none;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+@media (max-width: 768px) {
+  .hamburguer {
+    display: block;
+  }
+
+  #menu-botoes {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 5px;
+    width: 200px;
+    z-index: 99;
+  }
+
+  #menu-botoes.aberto {
+    display: flex;
+  }
+
+  #botoes-banner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #botoes-banner button:not(.hamburguer) {
+    width: 100%;
+    text-align: center;
+    border-bottom: none;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  #botoes-banner button:not(.hamburguer):hover {
+    background: rgba(255,255,255,0.1);
+  }
+}
