@@ -487,3 +487,6 @@ body.dark .galeria img {
 #btn-tema:hover {
   background: rgba(0, 242, 255, 0.2);
 }
+body:not(.dark) .hamburguer {
+  color: #333;
+}
