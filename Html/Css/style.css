@@ -414,6 +414,8 @@ body {
 @media (max-width: 768px) {
   .hamburguer {
     display: block;
+    font-size: 32px;
+    padding: 10px 20px;
   }
 
   #menu-botoes {
@@ -428,7 +430,7 @@ body {
     padding: 10px;
     gap: 5px;
     width: 200px;
-    z-index: 99;
+    z-index: 9999;
   }
 
   #menu-botoes.aberto {
