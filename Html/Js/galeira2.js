@@ -15,6 +15,7 @@ botoes.forEach(function(btn) {
 const homeSection = document.querySelector(".homeSection");
 if(categoria === "home"){
   homeSection.style.display = "flex";
+  iniciarCarrossel()
 }
 else{
   homeSection.style.display = "none";
@@ -25,7 +26,6 @@ const fotoPerf = document.querySelector(".foto-perf");
 
 if (categoria === "home") {
   fotoPerf.style.display = "flex";
-  iniciarCarrossel()
 } else {
   fotoPerf.style.display = "none";
 }
