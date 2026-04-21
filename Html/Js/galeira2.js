@@ -25,6 +25,7 @@ const fotoPerf = document.querySelector(".foto-perf");
 
 if (categoria === "home") {
   fotoPerf.style.display = "flex";
+  iniciarCarrossel()
 } else {
   fotoPerf.style.display = "none";
 }

@@ -314,85 +314,77 @@ body {
     gap: 15px;
     bottom: 20px;
   }
- 
+
   #botoes-banner button {
     padding: 8px 24px;
     font-size: 14px;
     letter-spacing: 2px;
   }
- 
+
   .homeSection {
     flex-direction: row;
-    gap: 60px;
-    padding: 40px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding: 40px 60px;
   }
- 
+
   .home-esquerda {
-    max-width: 500px;
+    max-width: 420px;
     flex-shrink: 0;
   }
- 
+
   .img-principal {
-    max-width: 350px;
+    max-width: 280px;
   }
- 
+
   .mini-prev,
   .mini-next {
-    width: 100px;
-    height: 150px;
+    width: 80px;
+    height: 120px;
   }
- 
+
   .foto-perf {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 400px;
-    gap: 30px;
-    padding: 40px 20px;
-    text-align: left;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
   }
- 
+
   .foto-perf img {
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     flex-shrink: 0;
-    order: 0;
   }
- 
+
   .foto-perf p {
     max-width: 300px;
-    color: #333;
-    font-size: 16px;
-    order: 1;
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.6;
   }
- 
+
   .galeria {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 30px;
   }
- 
+
   .galeria img {
     height: 375px;
   }
- 
+
   .galeria img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
- 
-  .galeria img:active {
-    transform: scale(1);
-  }
- 
+
   #rodape {
     justify-content: flex-end;
     gap: 25px;
     font-size: 14px;
-  }
- 
-  #rodape img {
-    width: 40px;
-    height: 40px;
   }
 }
  
