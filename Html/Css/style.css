@@ -436,6 +436,7 @@ body {
   }
 
   #botoes-banner {
+    position: relative;
     flex-direction: column;
     align-items: center;
   }
