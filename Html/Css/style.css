@@ -415,11 +415,14 @@ body {
 }
 
 @media (max-width: 768px) {
+  
   .hamburguer {
-    display: block;
-    font-size: 50px;
-    padding: 10px 20px;
-  }
+  display: block;
+  font-size: 36px;
+  padding: 5px 15px;
+  color: white !important;
+  text-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
 
   #menu-botoes {
     display: none;
