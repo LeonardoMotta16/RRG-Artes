@@ -443,11 +443,11 @@ body {
    #botoes-banner {
   position: absolute;
   bottom: 5px;
-  right: 10px;
-  left: auto;
+  left: 10px;
   transform: none;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+  color: whitesmoke;
 }
 
   #botoes-banner button:not(.hamburguer) {
