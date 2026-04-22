@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Gerenciar Imagens - RRG Arts</title>
   <style>
-    * { font-family: sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #0a0a0a; color: white; padding: 20px; }
+    * {
+      font-family: sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    h1 { text-align: center; margin-bottom: 20px; color: #00f2ff; }
+    body {
+      background: #0a0a0a;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00f2ff;
+    }
 
     #filtros {
       display: flex;
@@ -30,7 +45,8 @@
       transition: all 0.2s;
     }
 
-    #filtros button:hover, #filtros button.ativo {
+    #filtros button:hover,
+    #filtros button.ativo {
       background: #00f2ff;
       color: #0a0a0a;
     }
@@ -87,8 +103,14 @@
       transition: background 0.2s;
     }
 
-    .btn-deletar:hover { background: #ff0000; }
-    .btn-deletar:disabled { background: #555; cursor: not-allowed; }
+    .btn-deletar:hover {
+      background: #ff0000;
+    }
+
+    .btn-deletar:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
 
     #loading {
       text-align: center;
@@ -98,8 +120,18 @@
     }
   </style>
 </head>
-<body>
 
+<body>
+  <!-- Tela de login -->
+
+  <div id="tela-login">
+    <h1>Área Restrita</h1>
+    <input type="password" id="input-senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Entrar</button>
+    <p id="erro-login"></p>
+  </div>
+
+  <div id="conteudo-gerenciar" style="display:none"></div>
   <h1>Gerenciar Imagens</h1>
 
   <div id="filtros">
@@ -216,6 +248,38 @@
       document.querySelector('#filtros button').click()
     })
   </script>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      const token = sessionStorage.getItem('token_admin')
+      if (token) {
+        document.getElementById('tela-login').style.display = 'none'
+        document.getElementById('conteudo-gerenciar').style.display = 'block'
+      }
+    })
 
+    async function verificarSenha() {
+      const senha = document.getElementById('input-senha').value
+      const erro = document.getElementById('erro-login')
+
+      const resposta = await fetch('/.netlify/functions/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ senha })
+      })
+
+      const dados = await resposta.json()
+
+      if (dados.acesso) {
+        sessionStorage.setItem('token_admin', dados.token)
+        document.getElementById('tela-login').style.display = 'none'
+        document.getElementById('conteudo-gerenciar').style.display = 'block'
+      } else {
+        erro.textContent = 'Senha incorreta!'
+        erro.style.color = 'red'
+      }
+    }
+  </script>
 </body>
+
 </html>

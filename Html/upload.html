@@ -6,13 +6,22 @@
   <link rel="stylesheet" href="Css/up.css">
 </head>
 <body>
-  <div id="painel-upload">
+
+  <!-- Tela de login -->
+  <div id="tela-login">
+    <h1>Área Restrita</h1>
+    <input type="password" id="input-senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Entrar</button>
+    <p id="erro-login"></p>
+  </div>
+
+  <!-- Painel de upload (escondido até fazer login) -->
+  <div id="painel-upload" style="display:none">
     <h1>Upload de Arte</h1>
 
     <label>Imagem:</label>
     <input type="file" id="input-imagem" accept="image/*" multiple>
 
-      
     <br><label>Categoria:</label>
     <select id="input-categoria">
       <option value="clientes">Clientes</option>
@@ -23,6 +32,39 @@
     <br><button onclick="uploadImagem()" id="Enviar">Enviar</button>
     <p id="status"></p>
   </div>
+
+  <script>
+    // Verifica se já está logado
+    window.addEventListener('load', () => {
+      const token = sessionStorage.getItem('token_admin')
+      if (token === '${TOKEN_ADMIN}') {
+        document.getElementById('tela-login').style.display = 'none'
+        document.getElementById('painel-upload').style.display = 'block'
+      }
+    })
+
+    async function verificarSenha() {
+      const senha = document.getElementById('input-senha').value
+      const erro = document.getElementById('erro-login')
+
+      const resposta = await fetch('/.netlify/functions/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ senha })
+      })
+
+      const dados = await resposta.json()
+
+      if (dados.acesso) {
+        sessionStorage.setItem('token_admin', dados.token)
+        document.getElementById('tela-login').style.display = 'none'
+        document.getElementById('painel-upload').style.display = 'block'
+      } else {
+        erro.textContent = 'Senha incorreta!'
+        erro.style.color = 'red'
+      }
+    }
+  </script>
 
   <script src="Js/upload.js"></script>
 </body>
