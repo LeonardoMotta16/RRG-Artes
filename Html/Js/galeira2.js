@@ -2,6 +2,9 @@ let abaAtiva = null
 
 async function trocarAba(categoria) {
 
+  const menu = document.getElementById('menu-botoes')
+  if (menu) menu.classList.remove('aberto')
+
 const botoes = document.querySelectorAll("#botoes-banner button")
 botoes.forEach(function(btn) { btn.classList.remove("ativo") })
 botoes.forEach(function(btn) {
