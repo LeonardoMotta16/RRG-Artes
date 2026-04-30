@@ -132,122 +132,122 @@
   </div>
 
   <div id="conteudo-gerenciar" style="display:none">
-  <h1>Gerenciar Imagens</h1>
+    <h1>Gerenciar Imagens</h1>
 
-  <div id="filtros">
-    <button onclick="carregarImagens('tudo')" class="ativo">Tudo</button>
-    <button onclick="carregarImagens('clientes')">Clientes</button>
-    <button onclick="carregarImagens('estudos')">Estudos</button>
-    <button onclick="carregarImagens('ia')">IA</button>
-  </div>
+    <div id="filtros">
+      <button onclick="carregarImagens('tudo')" class="ativo">Tudo</button>
+      <button onclick="carregarImagens('clientes')">Clientes</button>
+      <button onclick="carregarImagens('estudos')">Estudos</button>
+      <button onclick="carregarImagens('ia')">IA</button>
+    </div>
 
-  <p id="status-geral"></p>
-  <div id="loading">Carregando imagens...</div>
-  <div class="galeria-gerenciar" id="galeria"></div>
+    <p id="status-geral"></p>
+    <div id="loading">Carregando imagens...</div>
+    <div class="galeria-gerenciar" id="galeria"></div>
 
-  <script>
-    let categoriaAtiva = 'tudo'
+    <script>
+      let categoriaAtiva = 'tudo'
 
-    async function carregarImagens(categoria) {
-      categoriaAtiva = categoria
+      async function carregarImagens(categoria) {
+        categoriaAtiva = categoria
 
-      // Atualiza botão ativo
-      document.querySelectorAll('#filtros button').forEach(btn => btn.classList.remove('ativo'))
-      event.target.classList.add('ativo')
+        // Atualiza botão ativo
+        document.querySelectorAll('#filtros button').forEach(btn => btn.classList.remove('ativo'))
+        event.target.classList.add('ativo')
 
-      const galeria = document.getElementById('galeria')
-      const loading = document.getElementById('loading')
-      const statusGeral = document.getElementById('status-geral')
+        const galeria = document.getElementById('galeria')
+        const loading = document.getElementById('loading')
+        const statusGeral = document.getElementById('status-geral')
 
-      galeria.innerHTML = ''
-      loading.style.display = 'block'
-      statusGeral.textContent = ''
+        galeria.innerHTML = ''
+        loading.style.display = 'block'
+        statusGeral.textContent = ''
 
-      try {
-        const resposta = await fetch(`/.netlify/functions/get-images?categoria=${categoria}`)
-        const urls = await resposta.json()
+        try {
+          const resposta = await fetch(`/.netlify/functions/get-images?categoria=${categoria}`)
+          const urls = await resposta.json()
 
-        loading.style.display = 'none'
-        statusGeral.textContent = `${urls.length} imagem(ns) encontrada(s)`
+          loading.style.display = 'none'
+          statusGeral.textContent = `${urls.length} imagem(ns) encontrada(s)`
 
-        if (urls.length === 0) {
-          galeria.innerHTML = '<p style="color:#aaa;text-align:center;grid-column:1/-1">Nenhuma imagem nesta categoria.</p>'
-          return
-        }
+          if (urls.length === 0) {
+            galeria.innerHTML = '<p style="color:#aaa;text-align:center;grid-column:1/-1">Nenhuma imagem nesta categoria.</p>'
+            return
+          }
 
-        urls.forEach(url => {
-          const publicId = extrairPublicId(url)
-          const cat = extrairCategoria(url)
+          urls.forEach(url => {
+            const publicId = extrairPublicId(url)
+            const cat = extrairCategoria(url)
 
-          const card = document.createElement('div')
-          card.className = 'card'
-          card.innerHTML = `
+            const card = document.createElement('div')
+            card.className = 'card'
+            card.innerHTML = `
             <img src="${url}" alt="arte">
             <div class="card-info">
               <span class="card-categoria">${cat}</span>
               <button class="btn-deletar" onclick="deletarImagem('${publicId}', this)">🗑 Deletar</button>
             </div>
           `
-          galeria.appendChild(card)
-        })
+            galeria.appendChild(card)
+          })
 
-      } catch (e) {
-        loading.style.display = 'none'
-        statusGeral.textContent = 'Erro ao carregar imagens.'
-        console.error(e)
+        } catch (e) {
+          loading.style.display = 'none'
+          statusGeral.textContent = 'Erro ao carregar imagens.'
+          console.error(e)
+        }
       }
-    }
 
-    async function deletarImagem(publicId, botao) {
-      if (!confirm('Tem certeza que deseja deletar esta imagem?')) return
+      async function deletarImagem(publicId, botao) {
+        if (!confirm('Tem certeza que deseja deletar esta imagem?')) return
 
-      botao.disabled = true
-      botao.textContent = 'Deletando...'
+        botao.disabled = true
+        botao.textContent = 'Deletando...'
 
-      try {
-        const resposta = await fetch('/.netlify/functions/delete-image', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ publicId })
-        })
+        try {
+          const resposta = await fetch('/.netlify/functions/delete-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ publicId })
+          })
 
-        const dados = await resposta.json()
+          const dados = await resposta.json()
 
-        if (dados.resultado === 'ok') {
-          botao.closest('.card').remove()
-          const total = document.querySelectorAll('.card').length
-          document.getElementById('status-geral').textContent = `${total} imagem(ns) encontrada(s)`
-        } else {
+          if (dados.resultado === 'ok') {
+            botao.closest('.card').remove()
+            const total = document.querySelectorAll('.card').length
+            document.getElementById('status-geral').textContent = `${total} imagem(ns) encontrada(s)`
+          } else {
+            botao.disabled = false
+            botao.textContent = '🗑 Deletar'
+            alert('Erro ao deletar imagem.')
+          }
+        } catch (e) {
           botao.disabled = false
           botao.textContent = '🗑 Deletar'
           alert('Erro ao deletar imagem.')
+          console.error(e)
         }
-      } catch (e) {
-        botao.disabled = false
-        botao.textContent = '🗑 Deletar'
-        alert('Erro ao deletar imagem.')
-        console.error(e)
       }
-    }
 
-    function extrairPublicId(url) {
-      // Extrai o public_id da URL do Cloudinary
-      // Ex: https://res.cloudinary.com/dg5lzxhft/image/upload/v123/clientes/abc.png
-      // Retorna: clientes/abc
-      const match = url.match(/\/upload\/(?:v\d+\/)?(.+)\.[a-z]+$/i)
-      return match ? match[1] : ''
-    }
+      function extrairPublicId(url) {
+        // Extrai o public_id da URL do Cloudinary
+        // Ex: https://res.cloudinary.com/dg5lzxhft/image/upload/v123/clientes/abc.png
+        // Retorna: clientes/abc
+        const match = url.match(/\/upload\/(?:v\d+\/)?(.+)\.[a-z]+$/i)
+        return match ? match[1] : ''
+      }
 
-    function extrairCategoria(url) {
-      const match = url.match(/\/upload\/(?:v\d+\/)?([^/]+)\//)
-      return match ? match[1] : 'sem categoria'
-    }
+      function extrairCategoria(url) {
+        const match = url.match(/\/upload\/(?:v\d+\/)?([^/]+)\//)
+        return match ? match[1] : 'sem categoria'
+      }
 
-    // Carrega tudo ao abrir a página
-    window.addEventListener('load', () => {
-      document.querySelector('#filtros button').click()
-    })
-  </script>
+      // Carrega tudo ao abrir a página
+      window.addEventListener('load', () => {
+        document.querySelector('#filtros button').click()
+      })
+    </script>
   </div>
   <script>
     window.addEventListener('load', () => {
